@@ -126,6 +126,28 @@ function getStudentStatus (student: Student): string {
     parent.appendChild(container);
   }
   
+  // förenklad kod
+
+  function showProduct(
+    name: string,
+    price: number,
+    amount: number,
+    description: string,
+    image: string,
+    parent: HTMLElement
+  ) {
+const container= document.createElement("div");
+
+container.innerHTML = `
+  <h4>${name}</h4>
+  <strong>${price}</strong>
+  <p>${amount}</p>
+  <p>${description}</p>
+  <img src="${image}" alt="min bild">
+  `
+  parent.appendChild(container)
+}
+
   /*
     5. Följande funktion kommer presentera studenter. Men det finns ett antal saker som 
     går att göra betydligt bättre. Gör om så många som du kan hitta!
