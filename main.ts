@@ -3,15 +3,22 @@
   Funktionen tar emot en lista med längshoppslängder och syftet med funktionen är att summera
   dessa hopplängder.
   */
-
   function getLength(jumpings: number[]): number {
     let totalNumber = 0;
-  
+    
     totalNumber = jumpings.reduce(
       (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump
     );
-  
     return totalNumber;
+    
+  }
+
+//förenkling
+  function getLength(jumpings: number[]): number {
+    return jumpings.reduce(
+      (jumpDistanceSoFar, currentJump) => jumpDistanceSoFar + currentJump,
+      0
+    );
   }
   
   /*
@@ -40,7 +47,14 @@
       return "IG";
     }
   }
-  
+  // förenklad kod
+function getStudentStatus (student: Student): string {
+  student.passed = student === "Sebastian" && student.handedInOnTime;
+  return student.passed ? "VG" : "G";
+}
+
+
+
   /*
     3. Variabelnamn är viktiga. Kika igenom följande kod och gör om och rätt.
     Det finns flera code smells att identifiera här. Vissa är lurigare än andra.
@@ -63,6 +77,26 @@
   
     return r / 7;
   }
+
+  // förenklad kod
+
+  class WeatherData {
+    constructor(public city: string, public date: Date, public temperature: number) {}
+  }
+
+  function averageWeeklyTemperature(readings: WeatherData[]): number {
+    const ONE_WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
+    const oneWeekBack = Date.now() - ONE_WEEK_IN_MS;
+  
+    const validReadings = readings.filter(r => r.city === "Stockholm" && r.date.getTime() > oneWeekBack);
+  
+    const totalTemperature = validReadings.reduce((sum, r) => sum + r.temperature, 0);
+  
+    return validReadings.length > 0 ? totalTemperature / validReadings.length : 0;
+  }
+
+
+
   
   /*
     4. Följande funktion kommer att presentera ett objekt i dom:en. 
