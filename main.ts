@@ -255,3 +255,26 @@ function createUser(
     return "Du är under 20 år";
   }
 }
+
+//förenklad kod
+
+interface User {
+  name: string;
+  birthday: Date;
+  email: string;
+  password: string;
+}
+
+function AgeControl(userData: User) {
+  let ageDiff = Date.now() - userData.birthday.getTime();
+  let ageDate = new Date(ageDiff);
+  let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  console.log(userAge);
+
+  if (!(userAge < 20)) {
+    // Logik för att skapa en användare
+  } else {
+    return "Du är under 20 år";
+  }
+}
